@@ -10,6 +10,7 @@ Text {
     color: "white"
     font.pixelSize: Theme.fontSize
     font.family: Theme.fontFamily
+    font.weight: Font.Bold
     text: " " + Qt.formatTime(clock.date, root.format)
 
     SystemClock {

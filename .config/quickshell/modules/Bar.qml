@@ -1,9 +1,13 @@
 import Quickshell
+import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 import "." as Modules
 
 PanelWindow {
+    id: window
+
+    readonly property HyprlandMonitor hyprMonitor: Hyprland.monitorFor(window.screen)
 
     required property var modelData
     screen: modelData
@@ -51,6 +55,10 @@ PanelWindow {
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: 8
         spacing: 8
+
+        Modules.Workspaces {
+            monitor: window.hyprMonitor
+        }
     }
 
 }
