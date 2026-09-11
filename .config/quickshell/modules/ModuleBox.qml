@@ -7,7 +7,7 @@ Rectangle {
     property int padding: 8
 
     radius: 4
-    color: hoverArea.containsMouse ? "#3a3a4a" : "#181818"
+    color: hoverArea.containsMouse ? Theme.hoverColor : Theme.backgroundColor
 
     implicitWidth: contentItem.childrenRect.width + padding
     implicitHeight: contentItem.childrenRect.height + padding

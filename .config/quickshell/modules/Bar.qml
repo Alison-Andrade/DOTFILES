@@ -45,6 +45,10 @@ PanelWindow {
         anchors.verticalCenter: parent.verticalCenter
         anchors.rightMargin: 8
         spacing: 8
+
+        Modules.Volume {}
+        
+        Modules.Tray {}
     }
 
     RowLayout {

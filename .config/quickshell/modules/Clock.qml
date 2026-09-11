@@ -7,7 +7,7 @@ Text {
 
     property string format: "hh:mm"
 
-    color: "white"
+    color: Theme.foregroundColor
     font.pixelSize: Theme.fontSize
     font.family: Theme.fontFamily
     font.weight: Font.Bold

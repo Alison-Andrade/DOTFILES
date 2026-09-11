@@ -9,7 +9,7 @@ Rectangle {
     id: rect
 
     radius: 4
-    color: "#181818"
+    color: Theme.backgroundColor
 
     implicitHeight: root.implicitHeight + 2
     implicitWidth: root.implicitWidth + 6
@@ -20,26 +20,17 @@ Rectangle {
         id: root
         spacing: 1
 
+        anchors.centerIn: parent
+
         function getWorkspaces() {
             if (!rect.monitor) return []
 
-            let list = []
-            for (let ws of Hyprland.workspaces.values) {
-                if (ws.monitor === rect.monitor) {
-                    list.push(ws)
-                }
-            }
-
-            return list.sort((a, b) => a.id - b.id)
+            return Hyprland.workspaces.values
+                .filter(ws => ws.monitor === rect.monitor)
+                .sort((a, b) => a.id - b.id)
         }
 
         property var workspaceList: getWorkspaces()
-
-        Connections {
-            target: Hyprland.workspaces
-            function onObjectAdded() { root.workspaceList = root.getWorkspaces() }
-            function onObjectRemoved() { root.workspaceList = root.getWorkspaces() }
-        }
 
         Repeater {
             model: root.workspaceList
@@ -55,9 +46,9 @@ Rectangle {
                 implicitHeight: 26
                 radius: 4
 
-                color: hoverArea.containsMouse ? "#3a3a4a" : "transparent"
+                color: hoverArea.containsMouse ? Theme.hoverColor : "transparent"
 
-                border.color: isFocused ? "white" : "transparent"
+                border.color: isFocused ? Theme.foregroundColor : "transparent"
                 border.width: isFocused ? 2 : 0
                 
                 Behavior on color {
@@ -71,7 +62,7 @@ Rectangle {
                 Text {
                     anchors.centerIn: parent
                     text: wsButton.modelData.id.toString()
-                    color: "white"
+                    color: Theme.foregroundColor
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSize
                     font.bold: true
