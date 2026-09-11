@@ -49,6 +49,10 @@ PanelWindow {
         Modules.Volume {}
         
         Modules.Tray {}
+
+        Modules.Power {
+            barWindow: window
+        }
     }
 
     RowLayout {

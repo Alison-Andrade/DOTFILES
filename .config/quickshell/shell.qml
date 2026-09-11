@@ -1,5 +1,6 @@
 //@ pragma UseQApplication
 //@ pragma RespectSystemStyle
+//@ pragma IconTheme Vimix-black
 
 import Quickshell
 import QtQuick
